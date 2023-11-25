@@ -10,9 +10,7 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - name: send telegram message on PR opened
-              uses: appleboy/telegram-action@master
-              with:
-                to: ${{ secrets.TELEGRAM_PR_CHANNEL_ID }}
-                token: ${{ secrets.TELEGRAM_TOKEN }}
-                message: |
-                    https://github.com/${{ github.repository }}/pull/${{ github.event.number }}
+              run: |
+                msg_text=`https://github.com/${{ github.repository }}/pull/${{ github.event.number }}`
+                curl -s -X POST 'https://api.telegram.org/bot${{ secrets.TELEGRAM_TOKEN }}/sendMessage' \
+                -d "chat_id=${{ secrets.TELEGRAM_CHAT_ID }}&text=${msg_text}&reply_to_message_id=${{ secrets.TELEGRAM_PR_TOPIC_ID }}"
