@@ -1,0 +1,16 @@
+name: PR Notification to Telegram
+on:
+    pull_request:
+        types:
+        - opened
+
+jobs:
+    build:
+        name: Build
+        runs-on: ubuntu-latest
+        steps:
+            - name: send telegram message on PR opened
+              run: |
+                msg_text='https://github.com/${{ github.repository }}/pull/${{ github.event.number }}'
+                curl -s -X POST 'https://api.telegram.org/bot${{ secrets.TELEGRAM_TOKEN }}/sendMessage' \
+                -d "chat_id=${{ secrets.TELEGRAM_CHAT_ID }}&text=${msg_text}&reply_to_message_id=${{ secrets.TELEGRAM_PR_TOPIC_ID }}"
