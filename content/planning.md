@@ -24,7 +24,7 @@
 
 ## DoR и DoD
 
-Помимо корректной постановки целей и разработки планов, в процессе выполнения задач важно также определить "Definitions of Ready" (DoR) и "Definitions of Done" (DoD).
+Помимо корректной постановки целей и разработки планов, в процессе выполнения задач важно также определить **"Definitions of Ready" (DoR)** и **"Definitions of Done" (DoD)**.
 
 ### "Definitions of Ready" (DoR)
 
